@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeAlpha Store | Premium E-Commerce</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="/css/style.css?v=1.0.1">
+</head>
+<body>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Loading Overlay -->
+  <div id="loader" class="loader-overlay hide">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Header & Navbar -->
+  <header class="app-header">
+    <div class="nav-container">
+      <a href="#/" class="logo">
+        <i class="fa-solid fa-bag-shopping brand-icon"></i>
+        <span>CodeAlpha<span class="logo-accent">Store</span></span>
+      </a>
+
+      <!-- Search Bar -->
+      <div class="search-wrapper">
+        <form id="global-search-form" class="search-form">
+          <input type="text" id="global-search-input" placeholder="Search products..." autocomplete="off">
+          <button type="submit" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+      </div>
+
+      <!-- Nav Links -->
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#/" class="nav-link active" data-route="home"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="#/products" class="nav-link" data-route="products"><i class="fa-solid fa-tags"></i> Shop</a>
+        <a href="#/cart" class="nav-link cart-link" data-route="cart">
+          <i class="fa-solid fa-cart-shopping"></i> 
+          <span>Cart</span>
+          <span class="cart-badge hide" id="cart-badge-count">0</span>
+        </a>
+        
+        <!-- Auth Guest Links -->
+        <span id="nav-guest-links" class="nav-auth-group">
+          <a href="#/login" class="nav-link login-btn" data-route="login">Login</a>
+          <a href="#/register" class="nav-link register-btn highlight-btn" data-route="register">Sign Up</a>
+        </span>
+
+        <!-- Auth Member Links -->
+        <span id="nav-member-links" class="nav-auth-group hide">
+          <a href="#/orders" class="nav-link" data-route="orders"><i class="fa-solid fa-receipt"></i> Orders</a>
+          <div class="user-menu-dropdown">
+            <button class="dropdown-trigger" id="dropdown-user-btn">
+              <i class="fa-solid fa-user-circle"></i> <span id="nav-user-name">Account</span>
+              <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+            </button>
+            <div class="dropdown-menu" id="user-dropdown-menu">
+              <a href="#/profile" class="dropdown-item"><i class="fa-solid fa-user-gear"></i> Profile Settings</a>
+              <hr class="dropdown-divider">
+              <button id="logout-btn" class="dropdown-item logout-action"><i class="fa-solid fa-right-from-bracket"></i> Log Out</button>
+            </div>
+          </div>
+        </span>
+      </nav>
+
+      <!-- Hamburger Menu Button (Mobile) -->
+      <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Toggle Navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main View Container -->
+  <main id="main-content" class="main-content">
+    <!-- Dynamic Content gets loaded here -->
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <div class="footer-section brand-info">
+        <a href="#/" class="logo">
+          <i class="fa-solid fa-bag-shopping brand-icon"></i>
+          <span>CodeAlpha<span class="logo-accent">Store</span></span>
+        </a>
+        <p>Premium quality items handpicked for your lifestyle. High performance, durable designs, and seamless checkout experience.</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" aria-label="Github"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+      <div class="footer-section links-info">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#/">Home</a></li>
+          <li><a href="#/products">Shop Products</a></li>
+          <li><a href="#/cart">Shopping Cart</a></li>
+          <li><a href="#/orders">My Orders</a></li>
+        </ul>
+      </div>
+      <div class="footer-section customer-service">
+        <h3>Customer Support</h3>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Returns & Exchanges</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div class="footer-section newsletter">
+        <h3>Subscribe</h3>
+        <p>Subscribe to our newsletter to receive the latest updates and exclusive discounts.</p>
+        <form class="newsletter-form" id="newsletter-form">
+          <input type="email" placeholder="Your email address" required>
+          <button type="submit">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 CodeAlphaStore. All rights reserved. Made for Student Internship Project.</p>
+    </div>
+  </footer>
+
+  <!-- Payment Gateway Sandbox Prototype Modal -->
+  <div id="payment-sandbox-modal" class="payment-modal-overlay hide">
+    <div class="payment-modal-card">
+      <button id="close-payment-modal-btn" class="payment-modal-close" aria-label="Close Payment Gateway"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="payment-modal-header">
+        <div class="payment-brand">
+          <i class="fa-solid fa-shield-halved payment-shield-icon"></i>
+          <span>CodeAlpha<span class="logo-accent">SecurePay</span></span>
+        </div>
+        <div class="payment-amount-box">
+          <span class="payment-amount-lbl">Amount Payable</span>
+          <span id="payment-modal-amount" class="payment-amount-val">₹0</span>
+        </div>
+      </div>
+
+      <div class="payment-tabs">
+        <button id="tab-card-btn" class="payment-tab active"><i class="fa-regular fa-credit-card"></i> Card</button>
+        <button id="tab-upi-btn" class="payment-tab"><i class="fa-solid fa-mobile-screen-button"></i> UPI / QR</button>
+      </div>
+
+      <!-- Card Form View -->
+      <form id="sandbox-card-form" class="payment-tab-content active">
+        <!-- Visual Credit Card Mockup -->
+        <div class="visual-card-wrapper">
+          <div class="visual-credit-card" id="visual-credit-card">
+            <div class="card-front">
+              <div class="card-front-top">
+                <img src="https://img.icons8.com/color/48/000000/chip.png" class="card-chip" alt="Chip">
+                <i class="fa-brands fa-cc-visa card-logo" id="visual-card-logo"></i>
+              </div>
+              <div class="card-front-number" id="visual-card-number">•••• •••• •••• ••••</div>
+              <div class="card-front-bottom">
+                <div class="card-holder-group">
+                  <span class="card-lbl">CARDHOLDER</span>
+                  <span class="card-val" id="visual-card-holder">YOUR NAME</span>
+                </div>
+                <div class="card-expiry-group">
+                  <span class="card-lbl">EXPIRES</span>
+                  <span class="card-val" id="visual-card-expiry">MM/YY</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inputs fields -->
+        <div class="form-group mt-4">
+          <label class="form-label" for="pay-card-name">Cardholder Name</label>
+          <input type="text" id="pay-card-name" class="form-input" placeholder="e.g. Harshit Sabat" required autocomplete="cc-name">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="pay-card-number">Card Number</label>
+          <input type="text" id="pay-card-number" class="form-input" placeholder="4111 1111 1111 1111" required autocomplete="cc-number" maxlength="19">
+        </div>
+        <div class="input-row">
+          <div class="form-group">
+            <label class="form-label" for="pay-card-expiry">Expiry Date</label>
+            <input type="text" id="pay-card-expiry" class="form-input" placeholder="MM/YY" required autocomplete="cc-exp" maxlength="5">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="pay-card-cvv">CVV</label>
+            <input type="password" id="pay-card-cvv" class="form-input" placeholder="123" required autocomplete="cc-csc" maxlength="3">
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary w-100 mt-2" style="height: 48px;">
+          <i class="fa-solid fa-lock"></i> Pay Securely
+        </button>
+      </form>
+
+      <!-- UPI QR Code View -->
+      <div id="sandbox-upi-view" class="payment-tab-content">
+        <p class="text-center mb-2" style="font-size: 0.85rem; color: var(--gray-600);">Scan the QR code using any UPI app (PhonePe, Google Pay, Paytm) to complete payment.</p>
+        
+        <div class="simulated-qr-box">
+          <div class="simulated-qr-code">
+            <i class="fa-solid fa-qrcode qr-icon"></i>
+            <div class="qr-scanner-line"></div>
+          </div>
+          <div class="upi-branding">
+            <span>BHIM UPI</span>
+            <div class="upi-logos">
+              <i class="fa-solid fa-mobile-screen"></i>
+              <span>GPay | PhonePe | Paytm</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group mt-2">
+          <label class="form-label" for="pay-upi-id">Or Enter UPI ID (VPA)</label>
+          <input type="text" id="pay-upi-id" class="form-input" placeholder="username@upi">
+        </div>
+        <button id="pay-upi-btn" class="btn-primary w-100 mt-2" style="height: 48px;">
+          Verify & Pay Securely
+        </button>
+      </div>
+
+      <!-- Payment Processing View -->
+      <div id="payment-modal-loader" class="payment-modal-status-overlay hide">
+        <div class="spinner"></div>
+        <h3>Authorizing Transaction</h3>
+        <p>Connecting to banking servers. Please do not close or refresh this window...</p>
+      </div>
+
+      <!-- Payment Success View -->
+      <div id="payment-modal-success" class="payment-modal-status-overlay hide">
+        <div class="success-checkmark-circle">
+          <i class="fa-solid fa-check checkmark"></i>
+        </div>
+        <h3>Payment Successful</h3>
+        <p>Transaction ID: <strong id="success-tx-id">TXN-000000</strong></p>
+        <p style="font-size: 0.85rem; color: var(--gray-400);">Redirecting to orders page...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Application JS Scripts -->
+  <script src="/js/api.js?v=1.0.4"></script>
+  <script src="/js/auth.js?v=1.0.4"></script>
+  <script src="/js/cart.js?v=1.0.4"></script>
+  <script src="/js/main.js?v=1.0.4"></script>
+</body>
+</html>
