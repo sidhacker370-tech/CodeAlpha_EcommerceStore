@@ -2,7 +2,7 @@
 
 A premium, full-stack E-Commerce web application built with a Node.js/Express.js backend, MongoDB database, and a responsive Single Page Application (SPA) frontend in Vanilla JavaScript and CSS. 
 
-This project was built as part of an internship project for **CodeAlpha** and features a simulated payment gateway sandbox with automated order confirmation timers and email receipts.
+This project was built as part of an internship project for **CodeAlpha** and features a simulated payment gateway sandbox with automated order confirmation .
 
 ---
 
